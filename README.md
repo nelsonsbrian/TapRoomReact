@@ -1,6 +1,6 @@
 # React Tap Room
 
-![Screenshot](./src/assets/images/TapRoom.png)
+![Screenshot](./src/assets/img/Chart.png)
 
 ## Epicodus Independent Project Week 1 - React - November 16th, 2018
 
