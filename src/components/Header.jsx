@@ -11,13 +11,16 @@ import { Link } from 'react-router-dom';
 function Header() {
     return (
         <div>
-            <h1>Tap Room!</h1>
-            <Link to="/">Home</Link> | <Link to="/events">See Events</Link> | <Link to="/about">About Us</Link> | <Link to='/inventory'>Inventory</Link>
-
+            <style jsx>{`
+                h1, h3{
+                    text-align: center;
+                }
+            `}</style>
+            <h1>Welcome to the Tap Room</h1>
+            <h3>Happy Hour Kegs</h3>
+            <h3><Link to="/">Home</Link> | <Link to="/events">See Events</Link> | <Link to="/about">About Us</Link> | <Link to='/inventory'>Inventory</Link></h3>
         </div>
     );
 }
-
-
 
 export default Header;
