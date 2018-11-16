@@ -3,11 +3,17 @@ import { Switch, Route } from 'react-router-dom';
 import InventoryTable from './InventoryTable';
 
 function BodyInventory() {
-    var styles = {
-    };
     return (
-        <div style={styles}>
-            Inventory
+        <div>
+            <style jsx>{`
+                th {
+                    text-align: center;
+                }
+                .table {
+                    color: white;
+                    background-color: rbg(255,255,255, .7);
+                }
+            `}</style>
             <table className="table">
                 <thead>
                     <tr>
@@ -16,7 +22,7 @@ function BodyInventory() {
                         <th scope="col">Brewer</th>
                         <th scope="col">Price</th>
                         <th scope="col">AL%</th>
-                        <th scope="col">Remaining</th>
+                        <th scope="col">Remaining (Pints)</th>
                         <th scope="col">Sell</th>
                         <th scope="col">Edit</th>
                     </tr>

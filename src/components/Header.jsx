@@ -14,6 +14,7 @@ function Header() {
             <style jsx>{`
                 h1, h3{
                     text-align: center;
+                    color: white;
                 }
             `}</style>
             <h1>Welcome to the Tap Room</h1>

@@ -13,7 +13,17 @@ import  Header  from './Header';
 
 function App() {
     return (
-        <div>
+        <div className="bgBody">
+            <style jsx>{`
+                .bgBody {
+                    background: black;
+                    background-image: url("https://wallpaperstock.net/wallpapers/thumbs1/25693wide.jpg");
+                    background-repeat: no-repeat;
+                    background-position-y: 125px; 
+                    background-attachment: fixed;
+                    height: 900px;
+                }
+                `}</style>
             <Header />
             <Switch>
                 <Route exact path='/' component={BodyHome} />
