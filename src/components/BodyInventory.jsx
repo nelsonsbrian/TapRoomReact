@@ -12,10 +12,8 @@ function BodyInventory(){
   };
   return (
     <div style={styles}>
-      <style jsx>{`
-        font-family: Helvetica;
-      `}</style>
-      TapRoomReact
+
+      Inventory
       {/* <Switch>
         <Route exact path='/' component={} />
       </Switch> */}

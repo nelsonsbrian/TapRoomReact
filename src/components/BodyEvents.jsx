@@ -12,10 +12,7 @@ function BodyEvents(){
   };
   return (
     <div style={styles}>
-      <style jsx>{`
-        font-family: Helvetica;
-      `}</style>
-      TapRoomReact
+      Events
       {/* <Switch>
         <Route exact path='/' component={} />
       </Switch> */}

@@ -1,10 +1,10 @@
 import React from 'react';
-//import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
-import { BodyHome } from './BodyHome';
-import { BodyAbout } from './BodyAbout';
-import { BodyEvents } from './BodyEvents';
-import { BodyInventory } from './BodyInventory';
+import  BodyHome  from './BodyHome';
+import  BodyAbout  from './BodyAbout';
+import  BodyEvents  from './BodyEvents';
+import  BodyInventory  from './BodyInventory';
+import  Header  from './Header';
 
 /*
   import { Link } from 'react-router-dom';
@@ -12,13 +12,8 @@ import { BodyInventory } from './BodyInventory';
 */
 
 function App() {
-  var styles = {
-  };
   return (
-    <div style={styles}>
-      <style jsx>{`
-        font-family: Helvetica;
-      `}</style>
+    <div>
       <Header />
       <Switch>
         <Route exact path='/' component={BodyHome} />
@@ -30,7 +25,5 @@ function App() {
   );
 }
 
-//App.propTypes = {
-//};
 
 export default App;

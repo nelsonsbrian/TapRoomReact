@@ -12,10 +12,8 @@ function BodyAbout(){
   };
   return (
     <div style={styles}>
-      <style jsx>{`
-        font-family: Helvetica;
-      `}</style>
-      TapRoomReact
+
+      About
       {/* <Switch>
         <Route exact path='/' component={} />
       </Switch> */}
