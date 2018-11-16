@@ -11,7 +11,7 @@ function BodyInventory() {
                 }
                 .table {
                     color: white;
-                    background-color: rbg(255,255,255, .7);
+                    background: rgba(0, 0, 0, 0.55);
                 }
             `}</style>
             <table className="table">

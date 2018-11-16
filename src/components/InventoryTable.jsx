@@ -8,6 +8,7 @@ function InventoryTable(props) {
             <style jsx>{`
                 td {
                     text-align: center;
+
                 }
             `}</style>
             <tr>
