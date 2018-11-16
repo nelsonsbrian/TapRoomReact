@@ -12,17 +12,17 @@ import  Header  from './Header';
 */
 
 function App() {
-  return (
-    <div>
-      <Header />
-      <Switch>
-        <Route exact path='/' component={BodyHome} />
-        <Route path='/about' component={BodyAbout} />
-        <Route path='/events' component={BodyEvents} />
-        <Route path='/inventory' component={BodyInventory} />
-      </Switch>
-    </div>
-  );
+    return (
+        <div>
+            <Header />
+            <Switch>
+                <Route exact path='/' component={BodyHome} />
+                <Route path='/about' component={BodyAbout} />
+                <Route path='/events' component={BodyEvents} />
+                <Route path='/inventory' component={BodyInventory} />
+            </Switch>
+        </div>
+    );
 }
 
 

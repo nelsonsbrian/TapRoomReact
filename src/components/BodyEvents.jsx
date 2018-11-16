@@ -8,16 +8,16 @@ import { Switch, Route } from 'react-router-dom';
 */
 
 function BodyEvents(){
-  var styles = {
-  };
-  return (
-    <div style={styles}>
+    var styles = {
+    };
+    return (
+        <div style={styles}>
       Events
-      {/* <Switch>
+            {/* <Switch>
         <Route exact path='/' component={} />
       </Switch> */}
-    </div>
-  );
+        </div>
+    );
 }
 
 //BodyEvents.propTypes = {

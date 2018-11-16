@@ -8,17 +8,17 @@ import { Switch, Route } from 'react-router-dom';
 */
 
 function BodyAbout(){
-  var styles = {
-  };
-  return (
-    <div style={styles}>
+    var styles = {
+    };
+    return (
+        <div style={styles}>
 
       About
-      {/* <Switch>
+            {/* <Switch>
         <Route exact path='/' component={} />
       </Switch> */}
-    </div>
-  );
+        </div>
+    );
 }
 
 //BodyAbout.propTypes = {

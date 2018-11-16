@@ -1,23 +1,37 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import InventoryTable from './InventoryTable';
 
 function BodyInventory() {
     var styles = {
     };
     return (
         <div style={styles}>
-
             Inventory
-            {masterKegList.map((keg, index) => (
-                <InventoryTable name={keg.name}
-                brewer={keg.brewer}
-                description={keg.description}
-                abv={keg.abv}
-                price={keg.price}
-                remaining={keg.remaining}
-                key={index}
-                />
-            ))}
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Brewer</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">AL%</th>
+                        <th scope="col">Remaining</th>
+                        <th scope="col">Sell</th>
+                        <th scope="col">Edit</th>
+                    </tr>
+                </thead>
+                {masterKegList.map((keg, index) => (
+                    <InventoryTable name={keg.name}
+                        brewer={keg.brewer}
+                        description={keg.description}
+                        abv={keg.abv}
+                        price={keg.price}
+                        remaining={keg.remaining}
+                        key={index}
+                    />
+                ))}
+            </table>
         </div>
     );
 }
