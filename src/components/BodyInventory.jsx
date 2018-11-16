@@ -1,27 +1,76 @@
 import React from 'react';
-//import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
 
-/*
-  import { Link } from 'react-router-dom';
-  <Link to="/">Home</Link> | <Link to="/newticket">Create Ticket</Link>
-*/
+function BodyInventory() {
+    var styles = {
+    };
+    return (
+        <div style={styles}>
 
-function BodyInventory(){
-  var styles = {
-  };
-  return (
-    <div style={styles}>
-
-      Inventory
-      {/* <Switch>
-        <Route exact path='/' component={} />
-      </Switch> */}
-    </div>
-  );
+            Inventory
+            {masterKegList.map((keg, index) => (
+                <InventoryTable name={keg.name}
+                brewer={keg.brewer}
+                description={keg.description}
+                abv={keg.abv}
+                price={keg.price}
+                remaining={keg.remaining}
+                key={index}
+                />
+            ))}
+        </div>
+    );
 }
 
-//BodyInventory.propTypes = {
-//};
-
 export default BodyInventory;
+
+const masterKegList = [
+    {
+        name: 'Ruby Zozzle',
+        brewer: 'Hi-Wheel',
+        description: 'Sparkling Wine & Grapefruit',
+        abv: '6.8%',
+        price: '7',
+        remaining: '20'
+    },
+    {
+        name: 'Tart N Juicy',
+        brewer: 'Epic',
+        description: 'Sour IPA',
+        abv: '4.5%',
+        price: '6',
+        remaining: '60'
+    },
+    {
+        name: 'Hamm\'s',
+        brewer: 'Miller/Coors',
+        description: 'American Lager',
+        abv: '4.7%',
+        price: '3',
+        remaining: '65'
+    },
+    {
+        name: 'Prismatic',
+        brewer: 'Ninkasi',
+        description: 'Juicy IPA',
+        abv: '5.9%',
+        price: '6',
+        remaining: '75'
+    },
+    {
+        name: 'Juicy Haze',
+        brewer: 'New Belgium',
+        description: 'India Pale Ale',
+        abv: '7.5%',
+        price: '6',
+        remaining: '18'
+    },
+    {
+        name: '8 Hop',
+        brewer: 'New Belgium',
+        description: 'Pale Ale',
+        abv: '5.5%',
+        price: '6',
+        remaining: '58'
+    }
+];
