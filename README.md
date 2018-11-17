@@ -1,7 +1,5 @@
 # React Tap Room
 
-![Screenshot](./src/assets/img/Chart.png)
-
 ## Epicodus Independent Project Week 1 - React - November 16th, 2018
 
 ### By **Brian Nelson**
@@ -34,7 +32,7 @@ Differences in development process in Angular and React:
 
 ## Development Notes & Issues
 
-
+![Screenshot](./src/assets/img/Chart.png)
 
 ## Known bugs
 

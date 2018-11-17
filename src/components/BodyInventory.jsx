@@ -1,34 +1,54 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import InventoryTable from './InventoryTable';
+import InventoryLow from './InventoryLow';
 
 function BodyInventory() {
     return (
         <div>
             <style jsx>{`
-                th {
+                th, h2 {
                     text-align: center;
                 }
-                .table {
+                .table, .lowDiv {
                     color: white;
                     background: rgba(0, 0, 0, 0.55);
                 }
+
+                h2 {
+                    color: white;
+                }
             `}</style>
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Brewer</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">AL%</th>
-                        <th scope="col">Remaining (Pints)</th>
-                        <th scope="col">Sell</th>
-                        <th scope="col">Edit</th>
-                    </tr>
-                </thead>
+            <div>
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Brewer</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">AL%</th>
+                            <th scope="col">Remaining (Pints)</th>
+                            <th scope="col">Sell</th>
+                            <th scope="col">Edit</th>
+                        </tr>
+                    </thead>
+                    {masterKegList.map((keg, index) => (
+                        <InventoryTable name={keg.name}
+                            brewer={keg.brewer}
+                            description={keg.description}
+                            abv={keg.abv}
+                            price={keg.price}
+                            remaining={keg.remaining}
+                            key={index}
+                        />
+                    ))}
+                </table>
+            </div>
+            <div className='lowDiv'>
+                <h2>Low Inventory</h2>
                 {masterKegList.map((keg, index) => (
-                    <InventoryTable name={keg.name}
+                    <InventoryLow name={keg.name}
                         brewer={keg.brewer}
                         description={keg.description}
                         abv={keg.abv}
@@ -37,7 +57,7 @@ function BodyInventory() {
                         key={index}
                     />
                 ))}
-            </table>
+            </div>
         </div>
     );
 }
