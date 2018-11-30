@@ -18,7 +18,7 @@ function InventoryTable(props) {
                 <td>{props.price}</td>
                 <td>{props.abv}</td>
                 <td>{props.remaining}</td>
-                <td><button className="btn">Sell</button></td>
+                <td><button onClick={props.handleSellPint} className="btn">Sell</button></td>
                 <td><button className="btn">Edit</button></td>
             </tr>
         </tbody>
@@ -31,7 +31,8 @@ InventoryTable.propTypes = {
     description: PropTypes.string.isRequired,
     abv: PropTypes.string.isRequired,
     price: PropTypes.string.isRequired,
-    remaining: PropTypes.string.isRequired
-};
+    remaining: PropTypes.number.isRequired,
+    handleSellPint: PropTypes.func.isRequired
+    };
 
 export default InventoryTable;

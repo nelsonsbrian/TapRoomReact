@@ -15,7 +15,7 @@ function InventoryLow(props) {
 
             `}</style>
             <p>
-                {props.name} - {props.brewer} - {props.remaining} - <button>ReOrder</button>
+                {props.name} - {props.brewer} - {props.remaining} - <button>ReOrde </button>
                 </p>
         </div>
     );
