@@ -12,7 +12,6 @@ function InventoryTable(props) {
                 }
             `}</style>
             <tr>
-                <th scope="row">1</th>
                 <td>{props.name}</td>
                 <td>{props.brewer}</td>
                 <td>{props.price}</td>
@@ -21,6 +20,7 @@ function InventoryTable(props) {
                 <td><button onClick={props.handleSellPint} className="btn">Sell</button></td>
                 <td><button className="btn">Edit</button></td>
             </tr>
+            
         </tbody>
     );
 }

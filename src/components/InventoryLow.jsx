@@ -15,7 +15,7 @@ function InventoryLow(props) {
 
             `}</style>
             <p>
-                {props.name} - {props.brewer} - {props.remaining} - <button>ReOrde </button>
+                {props.name} - {props.brewer} - {props.remaining} - <button>ReOrder </button>
                 </p>
         </div>
     );
@@ -28,7 +28,7 @@ InventoryLow.propTypes = {
     description: PropTypes.string.isRequired,
     abv: PropTypes.string.isRequired,
     price: PropTypes.string.isRequired,
-    remaining: PropTypes.string.isRequired
+    remaining: PropTypes.number.isRequired
 };
 
 export default InventoryLow;

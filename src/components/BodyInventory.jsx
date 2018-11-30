@@ -15,7 +15,7 @@ class BodyInventory extends React.Component {
                     description: 'Sparkling Wine & Grapefruit',
                     abv: '6.8%',
                     price: '7',
-                    remaining: '20'
+                    remaining: 20
                 },
                 {
                     id: '1001',
@@ -24,7 +24,7 @@ class BodyInventory extends React.Component {
                     description: 'Sour IPA',
                     abv: '4.5%',
                     price: '6',
-                    remaining: '60'
+                    remaining: 60
                 },
                 {
                     id: '1002',
@@ -33,7 +33,7 @@ class BodyInventory extends React.Component {
                     description: 'American Lager',
                     abv: '4.7%',
                     price: '3',
-                    remaining: '65'
+                    remaining: 65
                 },
                 {
                     id: '1003',
@@ -42,7 +42,7 @@ class BodyInventory extends React.Component {
                     description: 'Juicy IPA',
                     abv: '5.9%',
                     price: '6',
-                    remaining: '75'
+                    remaining: 75
                 },
                 {
                     id: '1004',
@@ -51,7 +51,7 @@ class BodyInventory extends React.Component {
                     description: 'India Pale Ale',
                     abv: '7.5%',
                     price: '6',
-                    remaining: '18'
+                    remaining: 18
                 },
                 {
                     id: '1005',
@@ -60,7 +60,7 @@ class BodyInventory extends React.Component {
                     description: 'Pale Ale',
                     abv: '5.5%',
                     price: '6',
-                    remaining: '58'
+                    remaining: 58
                 }
             ]
         }
@@ -84,13 +84,19 @@ class BodyInventory extends React.Component {
         this.setState({ masterTicketList: newMasterTicketList });
     }
 
-    handleSellPint(key) {
-        let kegListCopy = Object.assign({}, this.state.masterKegList);
-        kegListCopy[key].remaining--;
+    handleSellPint(kegId) {
+        let kegListCopy = this.state.masterKegList.slice();
+        for (let i = 0; i < kegListCopy.length; i++) {
+            if (kegListCopy[i].id === kegId) {
+                (kegListCopy[i].remaining > 0) ? kegListCopy[i].remaining-- : null;
+            }
+        }
         this.setState({ masterKegList: kegListCopy })
-        console.log("sell pint");
     }
+
     render() {
+        const lowKegList = this.state.masterKegList.filter(keg => (keg.remaining < 15));
+        const inventoryKegList = this.state.masterKegList.filter(keg => (keg.remaining > 0));        
         return (
             <div>
                 <style jsx>{`
@@ -109,7 +115,6 @@ class BodyInventory extends React.Component {
                     <table className="table">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Brewer</th>
                                 <th scope="col">Price</th>
@@ -119,29 +124,29 @@ class BodyInventory extends React.Component {
                                 <th scope="col">Edit</th>
                             </tr>
                         </thead>
-                        {this.state.masterKegList.map((keg, index) => (
+                        {inventoryKegList.map((keg, index) => (
                             <InventoryTable name={keg.name}
                                 brewer={keg.brewer}
                                 description={keg.description}
                                 abv={keg.abv}
                                 price={keg.price}
                                 remaining={keg.remaining}
-                            // key={index}
-                            // handleSellPint={() => this.handleSellPint(index)}
+                                key={index + 1}
+                                handleSellPint={() => this.handleSellPint(keg.id)}
                             />
                         ))}
                     </table>
                 </div>
                 <div className='lowDiv'>
                     <h2>Low Inventory</h2>
-                    {this.state.masterKegList.map((keg, index) => (
+                    {lowKegList.map((keg, index) => (
                         <InventoryLow name={keg.name}
                             brewer={keg.brewer}
                             description={keg.description}
                             abv={keg.abv}
                             price={keg.price}
                             remaining={keg.remaining}
-                            key={index}
+                            key={index + 1}
                         />
                     ))}
                 </div>
