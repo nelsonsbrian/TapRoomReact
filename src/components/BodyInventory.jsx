@@ -9,6 +9,7 @@ class BodyInventory extends React.Component {
         this.state = {
             masterKegList: [
                 {
+                    id: '1000',
                     name: 'Ruby Zozzle',
                     brewer: 'Hi-Wheel',
                     description: 'Sparkling Wine & Grapefruit',
@@ -17,6 +18,7 @@ class BodyInventory extends React.Component {
                     remaining: '20'
                 },
                 {
+                    id: '1001',
                     name: 'Tart N Juicy',
                     brewer: 'Epic',
                     description: 'Sour IPA',
@@ -25,6 +27,7 @@ class BodyInventory extends React.Component {
                     remaining: '60'
                 },
                 {
+                    id: '1002',
                     name: 'Hamm\'s',
                     brewer: 'Miller/Coors',
                     description: 'American Lager',
@@ -33,6 +36,7 @@ class BodyInventory extends React.Component {
                     remaining: '65'
                 },
                 {
+                    id: '1003',
                     name: 'Prismatic',
                     brewer: 'Ninkasi',
                     description: 'Juicy IPA',
@@ -41,6 +45,7 @@ class BodyInventory extends React.Component {
                     remaining: '75'
                 },
                 {
+                    id: '1004',
                     name: 'Juicy Haze',
                     brewer: 'New Belgium',
                     description: 'India Pale Ale',
@@ -49,6 +54,7 @@ class BodyInventory extends React.Component {
                     remaining: '18'
                 },
                 {
+                    id: '1005',
                     name: '8 Hop',
                     brewer: 'New Belgium',
                     description: 'Pale Ale',
@@ -61,14 +67,30 @@ class BodyInventory extends React.Component {
         this.handleSellPint = this.handleSellPint.bind(this);
     }
 
-    handleSellPint(index) {
-        let kegListCopy = this.state.masterKegList.slice();
-        kegListCopy[index].remaining--;
-        this.setState({masterKegList: kegListCopy})
+    updateTicketElapsedWaitTime() {
+        let newMasterTicketList = this.state.masterTicketList.slice();
+        newMasterTicketList.forEach((ticket) =>
+            ticket.formattedWaitTime = (ticket.timeOpen).fromNow(true)
+        );
+        this.setState({ masterTicketList: newMasterTicketList });
+    }
+
+
+    handleAddingNewTicketToList(newTicket) {
+        var newMasterTicketList = Object.assign({}, this.state.masterTicketList, {
+            [newTicket.id]: newTicket
+        });
+        newMasterTicketList[newTicket.id].formattedWaitTime = newMasterTicketList[newTicket.id].timeOpen.fromNow(true);
+        this.setState({ masterTicketList: newMasterTicketList });
+    }
+
+    handleSellPint(key) {
+        let kegListCopy = Object.assign({}, this.state.masterKegList);
+        kegListCopy[key].remaining--;
+        this.setState({ masterKegList: kegListCopy })
         console.log("sell pint");
     }
     render() {
-
         return (
             <div>
                 <style jsx>{`
@@ -79,7 +101,6 @@ class BodyInventory extends React.Component {
                     color: white;
                     background: rgba(0, 0, 0, 0.55);
                 }
-
                 h2 {
                     color: white;
                 }
@@ -105,8 +126,8 @@ class BodyInventory extends React.Component {
                                 abv={keg.abv}
                                 price={keg.price}
                                 remaining={keg.remaining}
-                                key={index}
-                                handleSellPint={() => this.handleSellPint(index)}
+                            // key={index}
+                            // handleSellPint={() => this.handleSellPint(index)}
                             />
                         ))}
                     </table>
