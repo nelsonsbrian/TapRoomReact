@@ -51,7 +51,7 @@ class BodyInventory extends React.Component {
                     description: 'India Pale Ale',
                     abv: '7.5%',
                     price: '6',
-                    remaining: 18
+                    remaining: 14
                 },
                 {
                     id: '1005',
@@ -65,25 +65,20 @@ class BodyInventory extends React.Component {
             ]
         }
         this.handleSellPint = this.handleSellPint.bind(this);
+        this.handleReorderKeg = this.handleReorderKeg.bind(this);
     }
 
-    updateTicketElapsedWaitTime() {
-        let newMasterTicketList = this.state.masterTicketList.slice();
-        newMasterTicketList.forEach((ticket) =>
-            ticket.formattedWaitTime = (ticket.timeOpen).fromNow(true)
-        );
-        this.setState({ masterTicketList: newMasterTicketList });
+    handleReorderKeg(kegId) {
+        console.log("reorder" + kegId);
+        let kegListCopy = this.state.masterKegList.slice();
+        for (let i = 0; i < kegListCopy.length; i++) {
+            if (kegListCopy[i].id === kegId) {
+                (kegListCopy[i].remaining < 16) ? kegListCopy[i].remaining += 124 : null;
+                console.log(kegListCopy[i].remaining);
+            }
+        }
+        this.setState({ masterKegList: kegListCopy })
     }
-
-
-    handleAddingNewTicketToList(newTicket) {
-        var newMasterTicketList = Object.assign({}, this.state.masterTicketList, {
-            [newTicket.id]: newTicket
-        });
-        newMasterTicketList[newTicket.id].formattedWaitTime = newMasterTicketList[newTicket.id].timeOpen.fromNow(true);
-        this.setState({ masterTicketList: newMasterTicketList });
-    }
-
     handleSellPint(kegId) {
         let kegListCopy = this.state.masterKegList.slice();
         for (let i = 0; i < kegListCopy.length; i++) {
@@ -96,7 +91,24 @@ class BodyInventory extends React.Component {
 
     render() {
         const lowKegList = this.state.masterKegList.filter(keg => (keg.remaining < 15));
-        const inventoryKegList = this.state.masterKegList.filter(keg => (keg.remaining > 0));        
+        let showLowKegList = null;
+        if (lowKegList.length > 0) {
+            showLowKegList =
+                <div className='lowDiv'>
+                    {lowKegList.map((keg, index) => (
+                        <InventoryLow name={keg.name}
+                            brewer={keg.brewer}
+                            description={keg.description}
+                            abv={keg.abv}
+                            price={keg.price}
+                            remaining={keg.remaining}
+                            key={index + 1}
+                            handleReorderKeg={() => this.handleReorderKeg(keg.id)}
+                        />
+                    ))}
+                </div>;
+        }
+        const inventoryKegList = this.state.masterKegList.filter(keg => (keg.remaining > 0));
         return (
             <div>
                 <style jsx>{`
@@ -137,19 +149,8 @@ class BodyInventory extends React.Component {
                         ))}
                     </table>
                 </div>
-                <div className='lowDiv'>
-                    <h2>Low Inventory</h2>
-                    {lowKegList.map((keg, index) => (
-                        <InventoryLow name={keg.name}
-                            brewer={keg.brewer}
-                            description={keg.description}
-                            abv={keg.abv}
-                            price={keg.price}
-                            remaining={keg.remaining}
-                            key={index + 1}
-                        />
-                    ))}
-                </div>
+                {(showLowKegList ? <h2>Low Inventory</h2> : null)}
+                {showLowKegList}
             </div>
         );
     }
